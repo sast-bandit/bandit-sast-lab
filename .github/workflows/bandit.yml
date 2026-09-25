@@ -1,0 +1,28 @@
+name: SAST (Bandit)
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install bandit
+      - name: Full report
+        run: bandit -r . -f html -o bandit-report.html --exit-zero
+      - name: Security gate (Medium+)
+        run: bandit -r . -ll
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-report
+          path: bandit-report.html
