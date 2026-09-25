@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">129</span><br>
+        Total lines skipped (#nosec): <span id="nosec">0</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href=".\41_scan_stream_default.py" target="_blank">.\41_scan_stream_default.py</a><br>
+    <b>Line number: </b>33<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+32	    cursor = connection.cursor()
+33	    query = f&quot;&quot;&quot;SELECT `ip`, CONCAT(REPLACE(`ip`,&#x27;.&#x27;,&#x27;_&#x27;), &#x27;-&#x27; , `country_code`, &#x27;-&#x27;, `region`, &#x27;-&#x27;, `city`) as &#x27;name_camera&#x27;
+34	            FROM rtsp_scan where `url` is NULL and `up` = &#x27;{os.uname()[1]}&#x27;;&quot;&quot;&quot;
+35	    cursor.execute(query)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href=".\41_scan_stream_default.py" target="_blank">.\41_scan_stream_default.py</a><br>
+    <b>Line number: </b>55<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+54	
+55	    query = f&quot;&quot;&quot;UPDATE `rtsp_scan` SET `url` = &#x27;{link_one}&#x27;, `up` = &#x27;{os.uname()[1]}&#x27;, `link` = &#x27;{link}&#x27;, `login` = &#x27;{login}&#x27;, `passwd` = &#x27;{passwd}&#x27;
+56	                WHERE `ip` = &#x27;{ip}&#x27;;&quot;&quot;&quot;
+57	    print(query)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: '5410845659:AAHKyxGyjRUZG-b_iNC52M7xiSPlHDLZMOw'<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">CWE-259</a><br>
+    <b>File: </b><a href=".\41_scan_stream_default.py" target="_blank">.\41_scan_stream_default.py</a><br>
+    <b>Line number: </b>104<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+103	
+104	    TOKEN = &#x27;5410845659:AAHKyxGyjRUZG-b_iNC52M7xiSPlHDLZMOw&#x27;
+105	    CHAT_ID = &#x27;-1001533673238&#x27;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Call to requests without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href=".\41_scan_stream_default.py" target="_blank">.\41_scan_stream_default.py</a><br>
+    <b>Line number: </b>108<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+107	
+108	    requests.post(SEND_URL, json={&#x27;chat_id&#x27;: CHAT_ID, &#x27;text&#x27;: f&quot;41_scan_stream_default done - {int(done)}&quot;})
+109	    substream.main()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: 'super-secret-key-123'<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">CWE-259</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>1<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+1	SECRET_KEY = &quot;super-secret-key-123&quot;
+2	DEBUG = True
+3	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>7<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+6	    q = request.GET.get(&quot;q&quot;, &quot;&quot;)
+7	    rows = MyModel.objects.raw(f&quot;SELECT * FROM myapp_mymodel WHERE name LIKE &#x27;%{q}%&#x27;&quot;)
+8	    return rows
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>22<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+21	    filename = request.GET.get(&quot;file&quot;, &quot;&quot;)
+22	    os.system(f&quot;tar -czf /backup/{filename}.tar.gz /data/{filename}&quot;)
+23	    return &quot;ok&quot;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-low">
+    <b>blacklist: </b> Consider possible security implications associated with pickle module.<br>
+    <b>Test ID:</b> B403<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/502.html" target="_blank">CWE-502</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>26<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b403-import-pickle" target="_blank">https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b403-import-pickle</a><br>
+
+<div class="code">
+<pre>
+25	
+26	import pickle
+27	def load_object_vulnerable(uploaded_file):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.<br>
+    <b>Test ID:</b> B301<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/502.html" target="_blank">CWE-502</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>29<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b301-pickle" target="_blank">https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b301-pickle</a><br>
+
+<div class="code">
+<pre>
+28	    data = uploaded_file.read()
+29	    obj = pickle.loads(data)
+30	    return obj
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>42<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+41	  cursor = db.cursor()
+42	  query = &quot;SELECT * FROM users WHERE username = &#x27;&quot; + username + &quot;&#x27;&quot;
+43	  cursor.execute(query)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-10">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Use of possibly insecure function - consider using safer ast.literal_eval.<br>
+    <b>Test ID:</b> B307<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>54<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b307-eval" target="_blank">https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b307-eval</a><br>
+
+<div class="code">
+<pre>
+53	    try:
+54	        result = eval(expression)
+55	        print(f&quot;Результат: {result}&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-11">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Use of possibly insecure function - consider using safer ast.literal_eval.<br>
+    <b>Test ID:</b> B307<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\vulnerable_examples.py" target="_blank">.\vulnerable_examples.py</a><br>
+    <b>Line number: </b>67<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b307-eval" target="_blank">https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b307-eval</a><br>
+
+<div class="code">
+<pre>
+66	    user_input = input(&quot;Enter math expression: &quot;)
+67	    result = eval(user_input)
+68	    print(&quot;Result:&quot;, result)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
