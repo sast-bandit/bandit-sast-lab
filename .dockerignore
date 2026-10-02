@@ -1,0 +1,6 @@
+.git
+.github
+QA_report
+README.md
+__pycache__
+*.pyc
