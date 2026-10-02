@@ -2,8 +2,8 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY requirements .
-RUN pip install --no-cache-dir -r requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY 41_scan_stream_default.py vulnerable_examples.py ./
 
