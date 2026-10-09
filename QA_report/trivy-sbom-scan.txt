@@ -1,0 +1,100 @@
+
+Report Summary
+
+┌─────────────────────────────┬────────────┬─────────────────┐
+│           Target            │    Type    │ Vulnerabilities │
+├─────────────────────────────┼────────────┼─────────────────┤
+│ sbom.cdx.json (debian 13.7) │   debian   │       20        │
+├─────────────────────────────┼────────────┼─────────────────┤
+│ Python                      │ python-pkg │        0        │
+└─────────────────────────────┴────────────┴─────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+sbom.cdx.json (debian 13.7)
+===========================
+Total: 20 (UNKNOWN: 0, LOW: 12, MEDIUM: 4, HIGH: 4, CRITICAL: 0)
+
+┌────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│  Library   │    Vulnerability    │ Severity │  Status  │ Installed Version │ Fixed Version │                            Title                             │
+├────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ apt        │ CVE-2011-3374       │ LOW      │ affected │ 3.0.3             │               │ It was found that apt-key in apt, all versions, do not       │
+│            │                     │          │          │                   │               │ correctly...                                                 │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2011-3374                    │
+├────────────┼─────────────────────┤          │          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ bash       │ TEMP-0841856-B18BAF │          │          │ 5.2.37-2+b10      │               │ [Privilege escalation possible to other user than root]      │
+│            │                     │          │          │                   │               │ https://security-tracker.debian.org/tracker/TEMP-0841856-B1- │
+│            │                     │          │          │                   │               │ 8BAF                                                         │
+├────────────┼─────────────────────┤          │          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ coreutils  │ CVE-2017-18018      │          │          │ 9.7-3             │               │ coreutils: race condition vulnerability in chown and chgrp   │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2017-18018                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2025-5278       │          │          │                   │               │ coreutils: Heap Buffer Under-Read in GNU Coreutils sort via  │
+│            │                     │          │          │                   │               │ Key Specification                                            │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2025-5278                    │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-56391      │          │          │                   │               │ coreutils: GNU coreutils uniq: Denial of Service and         │
+│            │                     │          │          │                   │               │ information disclosure via out-of-bounds...                  │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-56391                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-56392      │          │          │                   │               │ coreutils: GNU coreutils unexpand: Denial of Service via     │
+│            │                     │          │          │                   │               │ crafted tab stop values...                                   │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-56392                   │
+├────────────┼─────────────────────┤          │          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ dash       │ CVE-2026-102473     │          │          │ 0.5.12-12         │               │ dash: dash: Super-polynomial backtracking in pmatch when     │
+│            │                     │          │          │                   │               │ libc fnmatch is disabled                                     │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-102473                  │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-102474     │          │          │                   │               │ dash: dash: Heap out-of-bounds write in conv_escape via      │
+│            │                     │          │          │                   │               │ undersized Unicode escape reservation...                     │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-102474                  │
+├────────────┼─────────────────────┤          │          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ diffutils  │ CVE-2026-53910      │          │          │ 1:3.10-4          │               │ diffutils: heap‑based buffer overflow due to multiple signed │
+│            │                     │          │          │                   │               │ integer overflows in line‑mapping...                         │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-53910                   │
+├────────────┼─────────────────────┼──────────┤          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ tar        │ CVE-2026-18477      │ MEDIUM   │          │ 1.35+dfsg-3.1     │               │ tar: tar: TOCTOU in incremental dumpdir 'X' rename handling  │
+│            │                     │          │          │                   │               │ allows restore path...                                       │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-18477                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-18508      │          │          │                   │               │ tar: tar: --one-top-level hardlink targets not confined to   │
+│            │                     │          │          │                   │               │ top-level directory enabling arbitrary...                    │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-18508                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-5704       │          │          │                   │               │ tar: tar: Hidden file injection via crafted archives         │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-5704                    │
+│            ├─────────────────────┼──────────┤          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2005-2541       │ LOW      │          │                   │               │ tar: does not properly warn the user when extracting setuid  │
+│            │                     │          │          │                   │               │ or setgid...                                                 │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2005-2541                    │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ TEMP-0290435-0B57B5 │          │          │                   │               │ [tar's rmt command may have undesired side effects]          │
+│            │                     │          │          │                   │               │ https://security-tracker.debian.org/tracker/TEMP-0290435-0B- │
+│            │                     │          │          │                   │               │ 57B5                                                         │
+├────────────┼─────────────────────┼──────────┤          ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ util-linux │ CVE-2026-76642      │ HIGH     │          │ 2.41.5-0+deb13u1  │               │ util-linux: util-linux: failed external mount helper still   │
+│            │                     │          │          │                   │               │ runs privileged X-mount post-hooks                           │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-76642                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-78408      │          │          │                   │               │ util-linux: util-linux: nsenter --join-cgroup leaks root     │
+│            │                     │          │          │                   │               │ cgroup migration authority                                   │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-78408                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-78409      │          │          │                   │               │ util-linux: util-linux: X-mount.subdir detached-tree         │
+│            │                     │          │          │                   │               │ resolution can escape via intermediate symlinks              │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-78409                   │
+│            ├─────────────────────┤          │          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-78410      │          │          │                   │               │ util-linux: util-linux: restricted bind mounts do not pin    │
+│            │                     │          │          │                   │               │ the source, allowing X-mount.owner/group/mode...             │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-78410                   │
+│            ├─────────────────────┼──────────┤          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2026-3184       │ MEDIUM   │          │                   │               │ util-linux: util-linux: Access control bypass due to         │
+│            │                     │          │          │                   │               │ improper hostname canonicalization                           │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2026-3184                    │
+│            ├─────────────────────┼──────────┤          │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│            │ CVE-2022-0563       │ LOW      │          │                   │               │ util-linux: partial disclosure of arbitrary files in chfn    │
+│            │                     │          │          │                   │               │ and chsh when compiled...                                    │
+│            │                     │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+└────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘
