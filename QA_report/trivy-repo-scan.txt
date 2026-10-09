@@ -1,0 +1,52 @@
+trivy fs --scanners vuln,misconfig,secret .
+2026-10-09T11:55:17+03:00       INFO    [vulndb] Need to update DB
+2026-10-09T11:55:17+03:00       INFO    [vulndb] Downloading vulnerability DB...
+2026-10-09T11:55:17+03:00       INFO    [vulndb] Downloading artifact...        repo="mirror.gcr.io/aquasec/trivy-db:2"
+120.50 MiB / 120.50 MiB [--------------------------------------------------------------------] 100.00% 3.22 MiB p/s 38s
+2026-10-09T11:55:56+03:00       INFO    [vulndb] Artifact successfully downloaded       repo="mirror.gcr.io/aquasec/trivy-db:2"
+2026-10-09T11:55:56+03:00       INFO    [vuln] Vulnerability scanning is enabled
+2026-10-09T11:55:56+03:00       INFO    [misconfig] Misconfiguration scanning is enabled
+2026-10-09T11:55:56+03:00       INFO    [checks-client] Need to update the checks bundle
+2026-10-09T11:55:56+03:00       INFO    [checks-client] Downloading the checks bundle...
+234.65 KiB / 234.65 KiB [-----------------------------------------------------------------] 100.00% 212.95 KiB p/s 1.3s
+2026-10-09T11:55:59+03:00       INFO    [secret] Secret scanning is enabled
+2026-10-09T11:55:59+03:00       INFO    [secret] If your scanning is slow, please try '--scanners vuln,misconfig' to disable secret scanning
+2026-10-09T11:55:59+03:00       INFO    [secret] Please see https://trivy.dev/docs/v0.75/guide/scanner/secret#recommendation for faster secret detection
+2026-10-09T11:56:00+03:00       WARN    [pip] Unable to find python `site-packages` directory. License detection is skipped.    err="site-packages directory not found"
+2026-10-09T11:56:00+03:00       INFO    Number of language-specific files       num=1
+2026-10-09T11:56:00+03:00       INFO    [pip] Detecting vulnerabilities...
+2026-10-09T11:56:00+03:00       INFO    Detected config files   num=1
+
+Report Summary
+
+┌──────────────────┬────────────┬─────────────────┬───────────────────┬─────────┐
+│      Target      │    Type    │ Vulnerabilities │ Misconfigurations │ Secrets │
+├──────────────────┼────────────┼─────────────────┼───────────────────┼─────────┤
+│ requirements.txt │    pip     │        0        │         -         │    -    │
+├──────────────────┼────────────┼─────────────────┼───────────────────┼─────────┤
+│ Dockerfile       │ dockerfile │        -        │         2         │    -    │
+└──────────────────┴────────────┴─────────────────┴───────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+Dockerfile (dockerfile)
+=======================
+Tests: 27 (SUCCESSES: 25, FAILURES: 2)
+Failures: 2 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
+DS-0002 (HIGH): Specify at least 1 USER command in Dockerfile with non-root user as argument
+════════════════════════════════════════
+Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.
+
+See https://avd.aquasec.com/misconfig/ds-0002
+────────────────────────────────────────
+
+
+DS-0026 (LOW): Add HEALTHCHECK instruction in your Dockerfile
+════════════════════════════════════════
+You should add HEALTHCHECK instruction in your docker container images to perform the health check on running containers.
+
+See https://avd.aquasec.com/misconfig/ds-0026
+────────────────────────────────────────
