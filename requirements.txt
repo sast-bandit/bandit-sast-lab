@@ -2,3 +2,6 @@ pip==26.2.0
 opencv-python-headless==4.14.0.94
 PyMySQL==1.2.0
 requests==2.34.2
+msgpack==1.2.1
+setuptools==83.0.0
+urllib3==2.8.0
